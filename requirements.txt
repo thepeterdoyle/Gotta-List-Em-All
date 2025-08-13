@@ -1,0 +1,12 @@
+pandas
+requests
+beautifulsoup4
+lxml
+python-dateutil
+openai
+selenium
+webdriver-manager
+google-api-python-client
+google-auth
+google-auth-oauthlib
+python-dotenv
