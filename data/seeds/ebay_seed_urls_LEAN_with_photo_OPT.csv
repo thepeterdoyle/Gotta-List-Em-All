@@ -1,0 +1,3 @@
+URL,PhotoURL,Price,Quantity,PostagePaidBy,OptimizeTitle,OptimizeDescription,Condition,CardCondition,ProfessionalGrader,Grade,CertNumber,ShippingType,FlatService,FlatCost,Weight_lbs,Weight_oz,Length_in,Width_in,Depth_in,CustomLabel,Notes
+https://www.ebay.com/itm/EXAMPLE_SINGLE_CARD,,5.99,1,Buyer,Y,Y,Used,Near Mint or Better,,,,Flat,USPSFirstClass,3.99,,,,,CARD-0001,Sleeved + toploader,
+https://www.ebay.com/itm/EXAMPLE_100_CARD_SET,,24.99,1,Buyer,Y,Y,Used,,PSA,9,12345678,Calculated,,,2,8,12,9,3,SET-0100,100-card set in plastic case
