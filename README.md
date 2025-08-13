@@ -27,32 +27,26 @@ data/docs/README_dryrun.txt # dry-run notes
 data/docs/README_drive_helper.txt # drive helper notes
 docs/ebay_seed_LEAN_README.txt # seed field cheat sheet
 
-bash
-Copy
-Edit
-
 ## Setup
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # or .venv\Scripts\activate on Windows
 pip install -r requirements.txt
-(Optional) OpenAI for optimization
+
+## (Optional) OpenAI for optimization
 Set an environment variable:
 
 export OPENAI_API_KEY="sk-..."   # Windows: setx OPENAI_API_KEY "sk-..."
 If not set, the script still runs; it just skips optimization.
 
-(Optional) Google Drive helper (for PhotoURL)
+## (Optional) Google Drive helper (for PhotoURL)
 Enable Google Drive API in Google Cloud.
-
 Create OAuth Client ID (Desktop) and download client_secret.json.
-
 Place client_secret.json in the repo root (listed in .gitignore).
-
 First run will open a browser and save token.json.
 
-Quickstart
-1) Prepare seed
+## Quickstart
+## 1) Prepare seed
 Edit data/seeds/ebay_seed_urls_LEAN_with_photo_OPT.csv.
 
 Minimum fields:
@@ -72,7 +66,7 @@ Shipping (Flat vs Calculated + dimensions)
 
 See docs/ebay_seed_LEAN_README.txt for field help.
 
-2) (Optional) Fill PhotoURL from your Drive folder
+## 2) (Optional) Fill PhotoURL from your Drive folder
 python tools/google_drive_photo_url_helper.py \
   --folder_id YOUR_FOLDER_ID \
   --seed data/seeds/ebay_seed_urls_LEAN_with_photo_OPT.csv \
@@ -80,12 +74,13 @@ python tools/google_drive_photo_url_helper.py \
   --label_col CustomLabel
 Use --assign_by_order 1 to match by order instead of label.
 
-3) (Optional) Validate your seed
+## 3) (Optional) Validate your seed
 python scripts/ebay_seed_validator.py \
   config/ebay_allowed_values.json \
   data/seeds/ebay_seed_urls_LEAN_with_photo_OPT.csv \
   data/seeds/ebay_seed_validation_report.csv
-4) Generate preview + final upload
+
+## 4) Generate preview + final upload
 # Dry-run preview (scraped vs optimized), AND write final:
 python src/ebay_scrape_to_fileexchange.py \
   --seed data/seeds/ebay_seed_urls_LEAN_with_photo_OPT.csv \
@@ -93,7 +88,8 @@ python src/ebay_scrape_to_fileexchange.py \
   --optimize 1 \
   --dry_run 1 \
   --write_final 1
-Defaults when you omit paths:
+
+## Defaults when you omit paths:
 
 Preview → EBAY_PREVIEW_YYYY-MM-DD_HH-MM.csv next to your seed
 
@@ -106,7 +102,7 @@ python src/ebay_scrape_to_fileexchange.py \
   --out ./my_upload.csv \
   --preview ./my_preview.csv \
   --optimize 1
-Notes
+## Notes
 Title optimization is capped at 80 characters (hard limit).
 
 PhotoURL (if provided) overrides scraped images.
@@ -115,12 +111,12 @@ PostagePaidBy maps to ShippingCostPaidByOption (Buyer/Seller).
 
 For Calculated shipping, include weight/dimensions in seed.
 
-Troubleshooting
+## Troubleshooting
 If descriptions aren’t captured (eBay iframe), run with --use_selenium 1.
 
 If optimization seems unchanged, ensure OPENAI_API_KEY is set and --optimize 1.
 
 If PhotoURLs don’t load on eBay, confirm they’re public and use the uc?export=view&id=FILE_ID format.
 
-License
+## License
 MIT. See LICENSE.
